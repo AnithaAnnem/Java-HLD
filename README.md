@@ -6,7 +6,6 @@
 
 # 📚 Table of Contents
 
-
 - [📌 1. Introduction](#1-introduction)
 - [🧱 2. Architecture Overview](#2-architecture-overview)
   - [2.1 Master-Agent Model](#21-master-agent-model)
