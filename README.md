@@ -2,28 +2,33 @@
 
 <img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/eb7a94e5-f234-4480-a6b5-f6f03a99e275" />
 
-
 # 📚 Table of Contents
 
-1. [Introduction](#introduction)
-2. [Overview](#overview)
-3. [Architecture Summary](#architecture-summary)
-4. [System Context Diagram](#system-context-diagram)
-5. [High-Level Architecture](#high-level-architecture)
-6. [Component Architecture](#component-architecture)
-   - [Jenkins Controller](#jenkins-controller)
-   - [Jenkins Agents](#jenkins-agents)
-   - [Reverse Proxy](#reverse-proxy)
-   - [Storage Layer](#storage-layer)
-   - [Networking](#networking)
-7. [CI/CD Workflow](#cicd-workflow)
-8. [Security Architecture](#security-architecture)
-9. [Scalability & HA Design](#scalability--ha-design)
-10. [Backup & Disaster Recovery](#backup--disaster-recovery)
-11. [Monitoring & Logging](#monitoring--logging)
-12. [Tools & Integrations](#tools--integrations)
-13. [Best Practices](#best-practices)
-14. [Conclusion](#conclusion)
+1. [Overview](#-1-overview)
+2. [Introduction](#-2-introduction)
+3. [Architecture Summary](#-3-architecture-summary)
+4. [System Context Diagram](#-4-system-context-diagram)
+5. [High-Level Architecture](#-5-high-level-architecture)
+6. [Component Architecture](#-6-component-architecture)
+   - [Jenkins Controller](#-jenkins-controller)
+   - [Jenkins Agents](#-jenkins-agents)
+   - [Reverse Proxy](#-reverse-proxy)
+   - [Plugin Layer](#-plugin-layer)
+   - [Shared Libraries](#-shared-libraries)
+   - [Credentials Store](#-credentials-store)
+7. [Infrastructure Specifications](#️-7-infrastructure-specifications)
+8. [Security Best Practices](#-8-security-best-practices)
+9. [CI/CD Workflow](#-9-cicd-workflow)
+10. [CI/CD Best Practices](#-10-cicd-best-practices)
+11. [Integration Matrix](#-11-integration-matrix)
+12. [Backup & Disaster Recovery](#-12-backup--disaster-recovery)
+13. [Non-Functional Requirements](#-13-non-functional-requirements)
+14. [Monitoring & Logging](#-14-monitoring--logging)
+15. [Scalability & High Availability](#-15-scalability--high-availability)
+16. [Key Components Summary](#-16-key-components-summary)
+17. [Best Practices Summary](#-17-best-practices-summary)
+18. [Appendix](#-18-appendix)
+
 
 ---
 ## 🧭 1. Overview  
@@ -63,29 +68,48 @@ A typical production Jenkins setup includes:
 
 <img width="898" height="776" alt="image" src="https://github.com/user-attachments/assets/659c41e5-8e6b-4e67-a3d4-5b7842461fc1" />
 
+The diagram shows how Jenkins interacts with all surrounding systems in a CI/CD ecosystem:
+
+- **GitHub** → Triggers Jenkins builds when developers push code.
+- **SonarQube** → Jenkins sends code for analysis and receives quality reports.
+- **Nexus** → Jenkins pushes build artifacts (JARs, Docker images) and pulls dependencies.
+- **Slack** → Jenkins sends notifications and alerts to teams.
+- **Deployment Targets (ECS, Kubernetes, VMs)** → Jenkins deploys applications to these environments.
+- **Vault** → Jenkins retrieves sensitive secrets securely during pipeline execution.
+- **Monitoring Tools** → Monitor Jenkins performance, metrics, and health.
+
+**In short**, Jenkins sits at the center and communicates with all tools required for building, scanning, storing, deploying, and monitoring software.
+
 
 ## 🏛️ 5. High-Level Architecture  
 <img width="741" height="677" alt="image" src="https://github.com/user-attachments/assets/0dc26c09-07be-45b5-9529-6a028b661f0e" />
 
-The diagram above represents the core components of the Jenkins CI/CD production setup:
+### 🔹 External Access  
+Users access the system securely through the internet.
 
-- External Access – Users access the system securely through the internet.
+### 🔹 Nginx  
+Acts as a reverse proxy handling SSL termination and routing traffic to the controller.
 
-- Nginx – Acts as a reverse proxy handling SSL termination and routing traffic to the controller.
+### 🔹 Controller  
+The central orchestrator that manages jobs, pipelines, and communicates with agents.
 
-- Controller – The central orchestrator that manages jobs, pipelines, and communicates with agents.
+### 🔹 Agents  
+Execute build, test, and deployment tasks assigned by the controller.
 
-- Agents – Execute build, test, and deployment tasks assigned by the controller.
+### 🔹 Vault  
+Stores and retrieves sensitive credentials securely for pipeline usage.
 
-- Vault – Stores and retrieves sensitive credentials securely for pipeline usage.
+### 🔹 Git Repository  
+Holds application code, Jenkinsfiles, and shared libraries.
 
-- Git Repository – Holds application code, Jenkinsfiles, and shared libraries.
+### 🔹 EFS  
+Provides shared storage for Jenkins workspaces, logs, and artifacts.
 
-- EFS – Provides shared storage for Jenkins workspaces, logs, and artifacts.
+### 🔹 S3  
+Stores periodic backups of Jenkins data for disaster recovery.
 
-- S3 – Stores periodic backups of Jenkins data for disaster recovery.
-
-- Monitoring Stack – Tracks system performance, logs, and alerts to ensure overall health.
+### 🔹 Monitoring Stack  
+Tracks system performance, logs, and alerts to ensure overall health.
 
 This architecture ensures a secure, scalable, and highly available Jenkins production environment.
 
