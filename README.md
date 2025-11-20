@@ -35,7 +35,6 @@
 16. 🧠 [Key Components Summary](#key-components-summary)  
 17. 🧹 [Best Practices Summary](#best-practices-summary)  
 18. 📎 [Appendix](#appendix)  
-19. 📝 [Assumptions & Constraints](#assumptions--constraints)  *(optional)*
 
 ---
 ## 🧭 1. Overview  
@@ -292,16 +291,8 @@ Follow this link to know more about the Security Best Practices.[Jenkins Securit
 
 ---
 
-## 🧯 15. Backup & Disaster Recovery
 
-- Backup `JENKINS_HOME` regularly (ThinBackup or rsync)
-- Store job configs and Jenkinsfiles in Git
-- Document and test restore procedures
-- Consider HA setup with shared storage or Kubernetes
-
----
-
-## 📈 16. Scalability & High Availability
+## 📈 15. Scalability & High Availability
 
 | Strategy | Description |
 |----------|-------------|
@@ -311,7 +302,7 @@ Follow this link to know more about the Security Best Practices.[Jenkins Securit
 
 ---
 
-## 🧠 17. Key Components Summary
+## 🧠 16. Key Components Summary
 
 | Component   | Description |
 |-------------|-------------|
@@ -324,7 +315,7 @@ Follow this link to know more about the Security Best Practices.[Jenkins Securit
 
 ---
 
-## ✅ 18. Best Practices Summary
+## ✅ 17. Best Practices Summary
 
 -  Use pipeline-as-code and shared libraries
 -  Enforce RBAC and secure credentials
@@ -335,7 +326,7 @@ Follow this link to know more about the Security Best Practices.[Jenkins Securit
 
 ---
 
-## 📎 19. Appendix
+## 📎 18. Appendix
 
 ### 🔌 Recommended Plugins
 - Git, GitHub Branch Source, Pipeline, Blue Ocean, Kubernetes, Credentials Binding, Role Strategy
