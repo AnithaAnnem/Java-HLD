@@ -8,7 +8,7 @@
 2. [Introduction](#-2-introduction)
 3. [Architecture Summary](#-3-architecture-summary)
 4. [System Context Diagram](#-4-system-context-diagram)
-5. [High-Level Architecture](#5-high-level-architecture)
+5. [High Level Architecture](#5-high-level-architecture)
 6. [Component Architecture](#-6-component-architecture)
    - [Jenkins Controller](#-jenkins-controller)
    - [Jenkins Agents](#-jenkins-agents)
