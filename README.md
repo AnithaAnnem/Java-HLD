@@ -41,7 +41,7 @@ This document provides a high-level design overview of Jenkins in production, co
 
 A typical production Jenkins setup includes:
 
--Jenkins Controller (Master)
+- Jenkins Controller (Master)
 
 - Jenkins Agents (Static or Auto-Scaling)
 
