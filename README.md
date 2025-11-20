@@ -11,7 +11,7 @@
   - [2.1 Master-Agent Model](#21-master-agent-model)
   - [2.2 Communication](#22-communication)
   - [2.3 Plugin Architecture](#23-plugin-architecture)
-- [🖥️ 3. Infrastructure Specifications](#-3-infrastructure-specifications)
+- [3. Infrastructure Specifications](#3-infrastructure-specifications)
 - [🔐 4. Security Best Practices](#-4-security-best-practices)
   - [4.1 Authentication & Authorization](#41-authentication--authorization)
   - [4.2 Secrets Management](#42-secrets-management)
